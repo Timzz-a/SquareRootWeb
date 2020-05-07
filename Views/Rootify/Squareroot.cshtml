@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Square Roots comparison Page";
+}
+
+<div class="text-center">@*centering the header*@
+    <h1 class="display-4">Compare Square Roots</h1>@*header title display*@
+</div>
+@{
+    if(ViewBag.Num1 == null && ViewBag.Num2 == null && ViewBag.Sqrt1 == null && ViewBag.Sqrt2 == null)
+    {
+        <div>
+            <div class="text-center">
+    <b4 class="display-7">Comparing two different numbers to know which has the higher square root</b4>
+        </div>
+
+        </div>
+        <div class="text-center">   
+            <p>Please enter the first and second number in the boxes below</p> 
+        </div>
+    }//promt for user to enter first and second values to be compared
+    
+}
+
+
+@{
+    if(ViewBag.Sqrt1 != null && ViewBag.Sqrt1 > ViewBag.Sqrt2)// checking if first number has a greater square root to second number
+    {
+        <div>
+            <p>From your last comparison: The number @ViewBag.Num1, with square root @ViewBag.Sqrt1 has a higher square root than the number @ViewBag.Num2, with square root @ViewBag.Sqrt2</p>
+        </div>
+        <div>
+            <p>Please enter the first and second number in the boxes below</p>
+        </div>
+    }
+    else if (ViewBag.Sqrt1 != null && ViewBag.Sqrt1 < ViewBag.Sqrt2)// checking if value 2 has a higher square root to value 1
+    {
+        <div>
+            <p>From your last comparison: The number @ViewBag.Num2, with square root @ViewBag.Sqrt2 has a higher square root than the number @ViewBag.Num1, with square root @ViewBag.Sqrt1</p>
+        </div>  
+        <div>
+            <p>Please enter the first and second number in the boxes below</p>
+        </div>
+    }
+    else if (ViewBag.Sqrt1 != null && ViewBag.Sqrt1 == ViewBag.Sqrt2) //checking if the values entered are the same
+    {
+        <div>
+            <p>From your last comparison: Both numbers; @ViewBag.Num1 and @ViewBag.Num2 have same square roots, Please enter a different value</p>
+        </div>   
+        <div>
+            <p>Please enter the first and second number in the boxes below</p>
+        </div>
+    }
+     else if (ViewBag.Num1 < 0 || ViewBag.Num2 < 0) //checking if the value entered is a positive number
+    {
+        <div>
+            <p>Invalid input! Please enter a positive number!</p>
+        </div>   
+    }  
+        
+}
+<div>
+    <form asp-controller="Rootify" asp-action="Squareroot" method="POST">
+           
+        <input type="number" placeholder="First Number" name="firstNumber"/>
+        <input type="number" placeholder="Second Number" name="secondNumber">
+        <button type="submit">Compare</button>
+
+    </form>
+
+
+</div>
