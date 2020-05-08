@@ -53,16 +53,24 @@
      else if (ViewBag.Num1 < 0 || ViewBag.Num2 < 0) //checking if the value entered is a positive number
     {
         <div>
-            <p>Invalid input! Please enter a positive number!</p>
+            <p><span style="color:red;"> Invalid input! Please enter a positive number!</span></p>
         </div>   
     }  
+    else if(ViewBag.Num1 == null || ViewBag.Num2 == null)
+        {
+            <div>
+                 <p><span style="color:red;"> @ViewBag.ErrorMessage</span></p>
+            </div>   
+        }
+    
         
 }
 <div>
     <form asp-controller="Rootify" asp-action="Squareroot" method="POST">
            
-        <input type="number" placeholder="First Number" name="firstNumber"/>
-        <input type="number" placeholder="Second Number" name="secondNumber">
+        <input type="number" placeholder="First Number" name="firstNumber" required step=".01"/>
+        <input type="number" placeholder="Second Number" name="secondNumber" required step=".01"/>
+        
         <button type="submit">Compare</button>
 
     </form>

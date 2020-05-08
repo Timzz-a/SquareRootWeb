@@ -24,6 +24,10 @@ namespace SquareRootWeb.Controllers
             ViewBag.Sqrt1 = sqrt1;
             ViewBag.Sqrt2 = sqrt2;
             //using viewbag to be certain that value and results are displayed to the user.
+            if(ViewBag.Num1 == null || ViewBag.Num2 == null)
+                {
+                    ViewBag.ErrorMessage = "Not a valid number";
+                }
     
             return View();//returning the view (ViewBag)
         }
