@@ -54,12 +54,14 @@
     {
         <div>
             <p><span style="color:red;"> Invalid input! Please enter a positive number!</span></p>
+            @*displaying error message in color red when an invalid value is entered by the user*@
         </div>   
     }  
     else if(ViewBag.Num1 == null || ViewBag.Num2 == null)
         {
             <div>
                  <p><span style="color:red;"> @ViewBag.ErrorMessage</span></p>
+                 @*displaying error message in color red when an invalid value is entered by the user*@
             </div>   
         }
     
@@ -69,7 +71,8 @@
     <form asp-controller="Rootify" asp-action="Squareroot" method="POST">
            
         <input type="number" placeholder="First Number" name="firstNumber" required step=".01"/>
-        <input type="number" placeholder="Second Number" name="secondNumber" required step=".01"/>
+        <input type="number" placeholder="Second Number" name="secondNumber" required step=".01"/>@*making sure users can't submit without inputing a value...
+        Also to check that the value entered has not more than 2 decimals*@
         
         <button type="submit">Compare</button>
 
